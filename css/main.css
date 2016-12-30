@@ -1,0 +1,272 @@
+@font-face {
+    font-family: 'Topaz-Regular';
+    src: url(../fonts/Topaz-Regular.eot);
+    src: url(../fonts/Topaz-Regular.eot?#iefix) format('embedded-opentype'), url(../fonts/Topaz-Regular.woff) format('woff'), url(../fonts/Topaz-Regular.ttf) format('truetype'), url(../fonts/Topaz-Regular.svg#Topaz-Regular) format('svg');
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+}
+@font-face {
+    font-family: 'Casanova';
+    src: url(../fonts/Casanova.eot);
+    src: url(../fonts/Casanova.eot?#iefix) format('embedded-opentype'), url(../fonts/Casanova.woff) format('woff'), url(../fonts/Casanova.ttf) format('truetype'), url(../fonts/Casanova.svg#Casanova) format('svg');
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+}
+.header{
+    background-image: url(../images/background_pattern.png);
+    height: 1120px;
+}
+.header .title {
+    font-family: "Casanova";
+    color: #2e2b28;
+    font-size: 34px;
+}
+.header .subtitle {
+    color: dimgrey;
+    font-family: "Times New Roman";
+    font-size: 24px;
+    float: right;
+}
+.vert_line {
+    height: 82px;
+    width: 1px;
+    background-color: #cccccc;
+    position: relative;
+    margin-top: 25px;
+}
+.vert_line:after {
+    height: 82px;
+    width: 1px;
+    background-color: white;
+}
+.vert_line.left {
+    float: left;
+}
+
+.vert_line.right {
+    float: right;
+    display: block;
+}
+.header .logo{
+    width: 122px;
+    height: 120px;
+    background-image: url(../images/logo.png);
+    position: relative;
+}
+.phone_icon {
+    background: url(../images/icon_phone.png);
+    width: 35px;
+    height: 26px;
+    float: left;
+    margin-top: 9px;
+    margin-right: 9px;
+    cursor: pointer;
+}
+a#phone_number {
+    color: #2e2b28;
+    font-family: Casanova;
+    font-size: 34px;
+}
+
+a.need_recall {
+    color: #64abb4;
+    font-family: "Times New Roman";
+    font-size: 24px;
+}
+.dotted_underline {
+    border-bottom: 2px dotted #64abb4;
+    width: 266px;
+    margin: 0px 0px 2px 0px;
+    height: 20px;
+    margin-top: -23px;
+}
+.header .logo {
+    margin: 0px auto;
+}
+.logo_block {
+    display: -webkit-box;
+    margin: 0 auto;
+    width: 209px;
+}
+.top_backgr_line {
+    height: 9px;
+    background-color: #333333;
+}
+
+.topcircles {
+    width: 100%;
+    height: 4px;
+    background-image: url("../images/down_circles.png");
+    margin-bottom: 8px;
+}
+a:hover{
+    text-decoration: none;
+}
+a{
+    cursor: pointer;
+}
+.dots {
+    display: inline-block;
+    border-bottom: 2px dotted #d2d1cb;
+    width: 150px;
+    margin-top: -30px;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.menu {display: block;margin: 0 auto;text-align: center;}
+
+.categor {
+    display: inline-block;
+    margin-top: 18px;
+    text-transform: uppercase;
+    color: dimgrey;
+    font-family: "Times New Roman";
+    font-size: 18px;
+}
+.categor:after{
+    display: block;
+    background: #64abb4;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+}
+.categor:after {
+    display: inline-block;
+    background: #64abb4;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    content: "";
+    margin-bottom: 1px;
+    margin-left: 18px;
+    margin-right: 16px;
+}
+
+.categor.end:after {
+    display: none;
+}
+.puncts {display: inline-block;}
+
+.stack {
+    display: inline-block;
+}
+
+.left_block_header {
+    margin-top: 20px;
+}
+.back_uzor {
+    position: absolute;
+    width: 890px;
+    height: 477px;
+    background-image: url("../images/bat_uzor.png");
+    z-index: 1;
+}
+
+.battery {
+    background-image: url("../images/batarea-sale.png");
+    width: 610px;
+    height: 851px;
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    float: left;
+    margin-left: -20px;
+}
+
+.dicsount {
+    background-image: url("../images/sale_logo.png");
+    width: 152px;
+    height: 152px;
+}
+
+.two_block_group .title {
+    background-image: url(../images/retro_raiators.png);
+    width: 542px;
+    height: 284px;
+    position: relative;
+    display: inline-block;
+    margin-top: 25px;
+    margin-left: -29px;
+    z-index: 2;
+}
+.container.main_frame {
+    margin-top: 40px;
+}
+
+.text {
+    color: dimgrey;
+    font-family: "Times New Roman";
+    font-size: 24px;
+}
+
+.sec_w {
+    display: none;
+}
+
+span.days {font-family: "Casanova";font-size: 36px;position: relative;z-index: 2;color: white;margin-left: 16px;}
+
+span.hours {font-family: "Casanova";font-size: 36px;position: relative;z-index: 2;color: white;margin-left: 16px;}
+
+span.minutes {font-family: "Casanova";font-size: 36px;position: relative;z-index: 2;color: white;margin-left: 16px;}
+.smalltext {
+    color: #848484;
+    font-family: "Times New Roman";
+    font-size: 18px;
+    padding-left: 15px;
+    padding-top: 8px;
+}
+.time_left {
+    color: #848484;
+    font-family: "Times New Roman";
+    font-size: 18px;
+}
+.order {
+    background-image: url("../images/order.png");
+    width:260px;
+    height:74px;
+    text-shadow: 0.5px 0.8px 0 rgba(50, 59, 59, 0.56);
+    color: rgba(249, 251, 252, 0.95);
+    font-family: Topaz-Regular;
+    font-size: 30px;
+    text-align: center;
+    display: inline-block;
+    border: none;
+    background-color: Transparent;
+    outline: none;
+    float: right;
+}
+.days_w{
+    position: relative;
+    padding-top: 10px;
+    display: inline-block;
+    margin-right: 25px;
+}
+.background_img{
+    background-image: url("../images/days_counting.png");
+    position: absolute;
+    height: 74px;
+    width: 74px;
+    left: 0;
+    top:0;
+    z-index: 1;
+}
+.hours_w {
+    position: relative;
+    padding-top: 10px;
+    display: inline-block;
+    margin-right: 25px;
+}
+.min_w {
+    position: relative;
+    padding-top: 10px;
+    display: inline-block;
+}
+div#clockdiv {
+    display: inline-block;
+}
+.offer {
+    display: inline-block;
+}
