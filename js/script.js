@@ -46,23 +46,25 @@ $(document).ready(function() {
 
 	// END timer for offer
 
-	// Load more
-	var images = $(".handler > div").hide(), x = 1;
+	// Load more 1st block
+   var images = $(".handler > div").hide(), x = 2;
     var showMore = $('#showMore');
     var showLess = $('#showLess');
     var funcs = {
        'showMore': function() { ++x; show(); },
        'showLess': function() { --x; show(); }
     }
-    $('.controls').on('click', 'a', function(e){
+    $('.controls').on('click', '.arrows', function(e){
         return (funcs[e.target.id] || function(){})(), false;
     });
     function show() {
         images.hide().filter(function(i){ return i < (x * 3); }).show();
         showMore.show().filter(function(){ return !images.is(':hidden'); }).hide();
-        showLess.show().filter(function(){ return x === 1; }).hide();
+        showLess.show().filter(function(){ return x === 2; }).hide();
     }
     show();
     // END Load more
+
+
 
 });
