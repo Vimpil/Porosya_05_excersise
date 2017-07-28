@@ -1,70 +1,117 @@
 $(document).ready(function() {
+    $(".retro_catal").fancybox({
+        arrows: true,
+    });
+    // Timer script
+    // Set the date we're counting down to
+    var countDownDate = new Date("Jan 5, 2018 15:37:25").getTime();
 
-	// timer for offer
+    // Update the count down every 1 second
+    var x = setInterval(function() {
 
-	function getTimeRemaining(endtime) {
-		var t = Date.parse(endtime) - Date.parse(new Date());
-		var seconds = Math.floor((t / 1000) % 60);
-		var minutes = Math.floor((t / 1000 / 60) % 60);
-		var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
-		var days = Math.floor(t / (1000 * 60 * 60 * 24));
-		return {
-			'total': t,
-			'days': days,
-			'hours': hours,
-			'minutes': minutes,
-			'seconds': seconds
-		};
-	}
+        // Get todays date and time
+        var now = new Date().getTime();
 
-	function initializeClock(id, endtime) {
-		var clock = document.getElementById(id);
-		var daysSpan = clock.querySelector('.days');
-		var hoursSpan = clock.querySelector('.hours');
-		var minutesSpan = clock.querySelector('.minutes');
-		var secondsSpan = clock.querySelector('.seconds');
+        // Find the distance between now an the count down date
+        var distance = countDownDate - now;
 
-		function updateClock() {
-			var t = getTimeRemaining(endtime);
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-			daysSpan.innerHTML = t.days;
-			hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-			minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-			secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+        // Display the result in the element with id="timer"
+        document.getElementById("days").innerHTML = days;
+        document.getElementById("hours").innerHTML = hours;
+        document.getElementById("minutes").innerHTML = minutes;
+        // document.getElementById("seconds").innerHTML = seconds;
 
-			if (t.total <= 0) {
-				clearInterval(timeinterval);
-			}
-		}
 
-		updateClock();
-		var timeinterval = setInterval(updateClock, 1000);
-	}
+        // If the count down is finished, write some text 
+        // if (distance < 0) {
+        //   clearInterval(x);
+        //   document.getElementById("timer").innerHTML = "EXPIRED";
+        // }
+    }, 1000);
 
-	var deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);
-	initializeClock('clockdiv', deadline);
 
-	// END timer for offer
-
-	// Load more 1st block
-   var images = $(".handler > div").hide(), x = 2;
+    var images = $(".handler > div").hide(),
+        x = 1;
     var showMore = $('#showMore');
     var showLess = $('#showLess');
     var funcs = {
-       'showMore': function() { ++x; show(); },
-       'showLess': function() { --x; show(); }
+        'showMore': function() {
+            ++x;
+            show();
+        },
+        'showLess': function() {
+            --x;
+            show();
+        }
     }
-    $('.controls').on('click', '.arrows', function(e){
-        return (funcs[e.target.id] || function(){})(), false;
+    $('.controls').on('click', 'a', function(e) {
+        return (funcs[e.target.id] || function() {})(), false;
     });
+
     function show() {
-        images.hide().filter(function(i){ return i < (x * 3); }).show();
-        showMore.show().filter(function(){ return !images.is(':hidden'); }).hide();
-        showLess.show().filter(function(){ return x === 2; }).hide();
+        images.hide().filter(function(i) {
+            return i < (x * 6);
+        }).show();
+        showMore.show().filter(function() {
+            return !images.is(':hidden');
+        }).hide();
+        showLess.show().filter(function() {
+            return x === 1;
+        }).hide();
     }
     show();
-    // END Load more
 
+    // Hide Header on on scroll down
+    var didScroll;
+    var lastScrollTop = 0;
+    var delta = 100;
+    var navbarHeight = $('.top_header').outerHeight();
+    $(window).scroll(function(event) {
+        didScroll = true;
+    });
 
+    setInterval(function() {
+        if (didScroll) {
+            hasScrolled();
+            didScroll = false;
+        }
+    }, 250);
 
+    function hasScrolled() {
+        var st = $(this).scrollTop();
+        // Make sure they scroll more than delta
+        if (Math.abs(lastScrollTop - st) <= delta)
+            return;
+
+        // If they scrolled down and are past the navbar, add class .nav-up.
+        // This is necessary so you never see what is "behind" the navbar.
+        if (st > lastScrollTop && st > navbarHeight) {
+            // Scroll Down
+            console.log("height");
+            $('.top_header.nav-up').removeClass('nav-up').addClass('nav-down');
+        } else {
+            console.log("no height");
+            // Scroll Up
+            if (st + $(window).height() < $(document).height()) {
+                $('.top_header.nav-down').removeClass('nav-down').addClass('nav-up');
+            }
+        }
+
+        lastScrollTop = st;
+    }
+    $('#top_menu').slicknav({
+        label: '',
+    });
+    $(".slicknav_btn").click(function(){
+      console.log("addClass");
+      $("div.slicknav_menu").toggleClass("menu_backgr_col");
+      $("span.slicknav_icon.slicknav_no-text").toggleClass("toggled_menu_icon");
+    });
 });
+// slicknav menu
