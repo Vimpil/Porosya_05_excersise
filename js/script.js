@@ -2,6 +2,7 @@ $(document).ready(function() {
     $(".retro_catal").fancybox({
         arrows: true,
     });
+
     // Timer script
     // Set the date we're counting down to
     var countDownDate = new Date("Jan 5, 2018 15:37:25").getTime();
@@ -35,7 +36,8 @@ $(document).ready(function() {
         // }
     }, 1000);
 
-
+   
+    // Catal_retro_rad
     var images = $(".handler > div").hide(),
         x = 1;
     var showMore = $('#showMore');
@@ -66,6 +68,41 @@ $(document).ready(function() {
         }).hide();
     }
     show();
+    // END Catal_retro_rad
+
+
+ // Catal_retro_rad
+    var images2 = $(".handler2 > div").hide(),
+        y = 1;
+    var showMore2 = $('#showMore2');
+    var showLess2 = $('#showLess2');
+    var funcs2 = {
+        'showMore2': function() {
+            ++y;
+            show2();
+        },
+        'showLess2': function() {
+            --y;
+            show2();
+        }
+    }
+    $('.controls2').on('click', 'a', function(e) {
+        return (funcs2[e.target.id] || function() {})(), false;
+    });
+
+    function show2() {
+        images2.hide().filter(function(i) {
+            return i < (y * 6);
+        }).show();
+        showMore2.show().filter(function() {
+            return !images2.is(':hidden');
+        }).hide();
+        showLess2.show().filter(function() {
+            return y === 1;
+        }).hide();
+    }
+    show2();
+    // END Catal_retro_rad
 
     // Hide Header on on scroll down
     var didScroll;
@@ -108,10 +145,10 @@ $(document).ready(function() {
     $('#top_menu').slicknav({
         label: '',
     });
-    $(".slicknav_btn").click(function(){
-      console.log("addClass");
-      $("div.slicknav_menu").toggleClass("menu_backgr_col");
-      $("span.slicknav_icon.slicknav_no-text").toggleClass("toggled_menu_icon");
+    $(".slicknav_btn").click(function() {
+        console.log("addClass");
+        $("div.slicknav_menu").toggleClass("menu_backgr_col");
+        $("span.slicknav_icon.slicknav_no-text").toggleClass("toggled_menu_icon");
     });
 });
 // slicknav menu
