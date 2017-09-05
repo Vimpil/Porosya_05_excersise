@@ -39,19 +39,17 @@ a {
 }
 
 .right {
-    float: right;
-    display: inline-block;
+    text-align: right;
 }
 
 .mid {
-    float: none;
-    margin: 0 auto;
-    display: table;
+    text-align: center;
 }
 
 .left .title {
     font-family: "Casanova";
     font-size: 32px;
+    white-space: pre;
     margin-bottom: 0;
 }
 
@@ -87,11 +85,14 @@ a {
     vertical-align: inherit;
     padding-right: 8px;
 }
-
 .right .phone {
     font-family: "Casanova";
     font-size: 33px;
     margin-bottom: 0;
+    white-space: pre-line;
+}
+.top_header .phone {
+    white-space:pre;
 }
 
 .icon {
@@ -101,6 +102,7 @@ a {
 .get_a_call a {
     color: #1EACB6!important;
     font-size: 20px;
+    white-space: pre;
 }
 
 .callback .get_a_call a {
@@ -118,10 +120,10 @@ a {
     border-bottom: 2px dotted #0AC6BD;
 }
 
-.flex-container {
-    -webkit-align-items: center;
-    align-items: center;
-    display: flex;
+.table-cell-container {
+    display: table;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .box {
@@ -138,29 +140,22 @@ a {
     margin: 2px;
 }
 
-.flex-container {
-    -webkit-align-items: center;
-    /* Safari */
-    justify-content: space-between;
-    align-items: center;
-}
-
-.vcenter {
-    display: flex;
-    align-items: center;
-}
-
 .dotted {
+    background-image: -webkit-gradient(linear, left top, right top, color-stop(50%, #1EACB6), color-stop(50%, transparent));
+    background-image: -webkit-linear-gradient(left, #1EACB6 50%, transparent 50%);
+    background-image: -o-linear-gradient(left, #1EACB6 50%, transparent 50%);
     background-image: linear-gradient(to right, #1EACB6 50%, transparent 50%);
-    background-position: 0 26px;
+    background: -ms-linear-gradient(left, #1EACB6 50%, transparent 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#1EACB6', endColorstr='#1EACB6');/*For IE7-8-9*/
+    background-position: 0 23px;
     background-repeat: repeat-x;
     background-size: 6px 3px;
-    padding-bottom: 7px;
+    padding-bottom: 4px;
     padding-right: 4px;
 }
 
 @media all and (max-width: 1199px) {
-    .flex-container {
+    .table-cell-container {
         display: block;
     }
 }
@@ -196,6 +191,7 @@ a {
 #menu li {
     display: inline;
     list-style-type: none;
+    line-height: 22px;
 }
 
 #menu li:after {
@@ -245,6 +241,17 @@ ul#menu {
     #menu li {
         position: relative;
         margin-bottom: 17px;
+    }
+}
+@media (max-width: 1199px) {
+    .header .left {
+        display:block;
+        float:none;
+    }
+}
+@media (max-width: 768px) {
+    #menu li {
+        display:block;
     }
 }
 
@@ -318,7 +325,7 @@ button#get {
     left: 23px;
 }
 
-.menu.flex-container {
+.menu.table-cell-container {
     margin-bottom: 40px;
     position: relative;
 }
@@ -586,6 +593,12 @@ div#fifty img {
     margin-bottom: 7px;
 }
 
+@media all and (max-width:991px){
+.livery-article{
+    margin-right:5px;
+}
+}
+
 @media all and (max-width:425px) {
     .livery-article {
         width: 274px;
@@ -692,9 +705,6 @@ a#showLess2 {
 /*top header*/
 
 .top_header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     position: fixed;
     height: 90px;
     width: 100%;
@@ -703,21 +713,8 @@ a#showLess2 {
     box-shadow: 0px 5px 5px rgba(185, 185, 185, 0.5);
     z-index: 10;
     transition: top 0.2s ease-in-out;
-    top: 0;
+    display: table;
 }
-
-.top_header .logo {
-    width: 57px;
-    height: 60px;
-    display: inline-block;
-    background-image: url("../images/logo.png");
-    background-repeat: no-repeat;
-    background-size: 100%;
-    position: relative;
-    margin-left: 15px;
-    margin-right: 25px;
-}
-
 .achievments:after {
     content: "";
     color: red;
@@ -738,9 +735,9 @@ ul#menu:before {
     padding-right: 4px;
     position: absolute;
     height: 30px;
-    left: -105px;
+    left: 26px;
     width: 100px;
-    top: -11px;
+    top: -15px;
 }
 
 ul#menu:after {
@@ -753,9 +750,9 @@ ul#menu:after {
     padding-right: 4px;
     position: absolute;
     height: 30px;
-    right: -105px;
+    right: 25px;
     width: 100px;
-    top: -11px;
+    top: -15px;
 }
 
 @media all and (max-width:1199px) {
@@ -849,13 +846,13 @@ ul#menu:after {
     z-index: 0;
 }
 
-.top_header .logo:after {
+.logo_wrap:after {
     content: "";
     border-left: 1px solid #E1E1D8;
     height: 61px;
     position: absolute;
     right: -25px;
-    top: 0;
+    top: 15px;
 }
 
 .navigation ul#menu:before {
@@ -866,14 +863,18 @@ ul#menu:after {
     display: none;
 }
 
-.navigation .menu.flex-container {
+.navigation .menu.table-cell-container {
     margin-bottom: 0;
+    vertical-align: middle;
+    width: 100%;
 }
 
 .phone {
     color: #2e2b28;
     font-family: "Times New Roman";
     font-size: 24px;
+    text-align: right;
+    /* white-space: pre; */
 }
 
 .get_a_call {
@@ -888,21 +889,22 @@ ul#menu:after {
     height: 61px;
     position: absolute;
     left: -23px;
-    top: 3px;
+    top: 15px;
 }
 
 .callback {
     position: relative;
     margin-right: 20px;
     margin-left: 25px;
+    display: table-cell;
 }
 
 .nav-up {
-    top: -100px;
+    top: -130px;
 }
 
 .nav-down {
-    top: 0px;
+    top: 0px;    
 }
 
 .top_header .get_a_call.dotted {
@@ -1331,6 +1333,7 @@ input {
 }
 .map iframe {
     width: 100%;
+    position: relative;
 }
 .map {
     position: relative;
@@ -1380,6 +1383,7 @@ span.horiz_top_line{
     height: 9px;
     width:100%;
     top: -8px;
+    left: 0;
 }
 span.horiz_btm_line{
     position: absolute;
@@ -1388,6 +1392,7 @@ span.horiz_btm_line{
     height: 9px;
     width:100%;
     bottom:2px;
+    left: 0;
 }
 span.vertic_left_line{
     position: absolute;
@@ -1434,7 +1439,7 @@ button#questions {
     color: rgba(249, 251, 252, 0.95);
     font-family: Topaz;
     font-size: 30px;
-    line-height: 20px;
+    line-height: 73px;
     margin: 0 auto;
     margin-top: -4px;
     float: none;
@@ -1510,7 +1515,11 @@ div.after img {
     padding-top: 30px;
     text-align: center;
 }
-
+@media all and (max-width:991px){
+    .footer{
+        padding-bottom:30px;
+    }
+}
 .menu_types li {
     display: table-cell;
 }
@@ -1522,13 +1531,19 @@ div.after img {
     height: auto;
     overflow: hidden;
     margin-bottom: 20px;
+    padding-top: 10px;
+    margin-bottom: 30px;
+}
+.menu_types .wrap{
+    display:inline-table;
 }
 .menu_types a{
     color: #c6c6c6!important;
     font-family: "Times New Roman";
     font-size: 18px;
-    display: -webkit-inline-box;
+    display: inline-table;
     height:40px;
+    white-space: pre;
 }
 .menu_types {
     position: relative;
@@ -1550,6 +1565,7 @@ span.spacer {
     .copy_right .right{
         float:none;
         display: block;
+        text-align: center;
     }
 }
 @media all and (max-width:768px){
@@ -1571,22 +1587,72 @@ span.spacer {
     color: white!important;
 }
 button:focus {outline:0;}
-@media all and (max-width:711px){
+@media all and (max-width:991px){
     .menu_types{
-        display:grid;
+        display: table;
+        margin: 0 auto;
     }
 }
-@media all and (max-width:711px){
+@media all and (max-width:991px){
     .menu_types a{
-        display:block;
+        display:inline-block;
         width: max-content;
         margin: 0 auto;
     }
 }
+@media all and (max-width:991px){
+    .spacer{
+        display: none;
+    }
+}
+@media all and (max-width:991px){
+    .menu_types .wrap{
+ width:100%;
+    }
+}
 .dotted_footer {
+    background-image: -webkit-gradient(linear, left top, right top, color-stop(50%, #c6c6c6), color-stop(50%, transparent));
+    background-image: -webkit-linear-gradient(left, #c6c6c6 50%, transparent 50%);
+    background-image: -o-linear-gradient(left, #c6c6c6 50%, transparent 50%);
     background-image: linear-gradient(to right, #c6c6c6 50%, transparent 50%);
+    background: -ms-linear-gradient(left, #c6c6c6 50%, transparent 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ffffff', endColorstr='#ffffff');/*For IE7-8-9*/
     background-position: 0 26px;
     background-repeat: repeat-x;
     background-size: 6px 3px;
-    padding-bottom: 7px;
+    padding-bottom: 12px;
+}
+.logo_wrap {
+    width: 53px;
+    display: table-cell;
+    position: relative;
+    margin-left: 15px;
+}
+@media all and (max-width:991px){
+    div.logo_wrap:after, div.callback:before{
+        top: 27px!important;
+    }
+}
+@media (max-width: 991px){
+    img.logo{
+        padding-top: 30px!important;
+    }
+}
+img.logo {
+    width: 100%;
+    padding-top: 20px;
+}
+
+.navigation {
+    display: table-cell;
+    padding-right: 25px;
+    vertical-align: middle;
+    padding-left: 25px;
+    line-height: 30px;
+    padding-top: 1px;
+}
+@media all and (max-width:991px){
+    p.line{
+        text-align:center;
+    }
 }
