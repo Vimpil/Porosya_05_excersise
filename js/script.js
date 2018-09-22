@@ -5,7 +5,8 @@ $(document).ready(function() {
 
     // Timer script
     // Set the date we're counting down to
-    var countDownDate = new Date("Jan 5, 2018 15:37:25").getTime();
+    var countDownDate = new Date();
+    countDownDate.setDate(countDownDate.getDate()+5);
 
     // Update the count down every 1 second
     var x = setInterval(function() {
@@ -130,10 +131,8 @@ $(document).ready(function() {
         // This is necessary so you never see what is "behind" the navbar.
         if (st > lastScrollTop && st > navbarHeight) {
             // Scroll Down
-            console.log("height");
             $('.top_header.nav-up').removeClass('nav-up').addClass('nav-down');
         } else {
-            console.log("no height");
             // Scroll Up
             if (st + $(window).height() < $(document).height()) {
                 $('.top_header.nav-down').removeClass('nav-down').addClass('nav-up');
@@ -146,9 +145,77 @@ $(document).ready(function() {
         label: '',
     });
     $(".slicknav_btn").click(function() {
-        console.log("addClass");
         $("div.slicknav_menu").toggleClass("menu_backgr_col");
         $("span.slicknav_icon.slicknav_no-text").toggleClass("toggled_menu_icon");
     });
 });
 // slicknav menu
+
+// send mail
+// document.getElementById("questions").onclick = function() {
+//     var name_input=document.getElementById('user_name').value;
+//     window.open("mailto:"+emailTo+'?cc='+emailCC+'&subject='+emailSub+'&body='+emailBody);
+//     //console.log(name_input);
+// };
+    
+//     var emailTo="test@mail.com";
+//     var emailCC="test";
+//     var emailSub="test";
+//     var emailBody="1";
+    
+// send mail
+document.getElementById("questions").onclick = function() {
+    var name_input=document.getElementById('user_name').value;
+Email.send("vimpil@ya.ru",
+"vimpil@ya.ru",
+"This is a subject",
+"this is the body",
+{token: "86abfc10-b492-4c64-b693-dcf4c160006b"});
+};
+
+
+
+//--------------Fancybox options-----------------------------
+    var fancybox_present_options_array = {
+        "wrapCSS": "call",
+        "padding": 0,
+        helpers: {
+            overlay: {
+                locked: false,
+                opacity: 0.1,
+                css: {
+                    'background': 'rgba(90, 92, 94, 0.8)'
+                }
+            }
+        }
+    }
+
+    var fancybox_elements_gal_options_array ={
+        "wrapCSS": "call",
+        "padding": 0,
+        "maxWidth": "970px",
+        helpers: {
+            overlay: {
+                locked: false,
+                opacity: 0.1,
+                css: {
+                    'background': 'rgba(90, 92, 94, 0.8)'
+                }
+            }
+        }
+    };
+
+    // get_a_call
+    
+    $("#call_me").click(function(event) {
+        console.log("clicked");
+        $("#call_me").fancybox(fancybox_present_options_array);
+    });
+    $("#call_me2").click(function(event) {
+        console.log("clicked");
+        $("#call_me2").fancybox(fancybox_present_options_array);
+    });
+
+// END get_a_call
+
+    //--------------END Fancybox options-----------------------
