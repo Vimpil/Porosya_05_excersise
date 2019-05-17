@@ -1,4 +1,21 @@
 $(document).ready(function() {
+
+
+$("#call_me").trigger('click');
+
+$("#call_me2").trigger('click');
+
+    $("#call_me").click(function(event) {
+        console.log("clicked");
+        $("#call_me").fancybox(fancybox_present_options_array);
+    });
+
+    $("#call_me2").click(function(event) {
+        console.log("clicked");
+        $("#call_me2").fancybox(fancybox_present_options_array);
+    });
+
+
     $(".retro_catal").fancybox({
         arrows: true,
     });
